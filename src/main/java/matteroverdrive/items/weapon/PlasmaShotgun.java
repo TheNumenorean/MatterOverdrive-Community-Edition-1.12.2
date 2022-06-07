@@ -85,7 +85,7 @@ public class PlasmaShotgun extends EnergyWeapon {
         if (hand == EnumHand.OFF_HAND) {
             return ActionResult.newResult(EnumActionResult.PASS, stack);
         }
-        this.TagCompountCheck(stack);
+        this.tagCompoundCheck(stack);
 
         if (canFire(stack, world, player)) {
             player.setActiveHand(hand);
