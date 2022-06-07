@@ -43,7 +43,7 @@ public class MatterContainer extends MOBaseItem {
     }
 
     @Override
-    public void InitTagCompount(ItemStack stack) {
+    public void initTagCompound(ItemStack stack) {
         NBTTagCompound tagCompound = new NBTTagCompound();
         tagCompound.setBoolean("fillMode", true);
         stack.setTagCompound(tagCompound);
@@ -63,7 +63,7 @@ public class MatterContainer extends MOBaseItem {
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItem(hand);
 
-        this.TagCompountCheck(stack);
+        this.tagCompoundCheck(stack);
 
         NBTTagCompound nbt = stack.getTagCompound();
 
@@ -237,7 +237,7 @@ public class MatterContainer extends MOBaseItem {
             return ActionResult.newResult(EnumActionResult.FAIL, stack);
         }
 
-        this.TagCompountCheck(stack);
+        this.tagCompoundCheck(stack);
 
         if (hand == EnumHand.OFF_HAND) {
             return ActionResult.newResult(EnumActionResult.PASS, stack);

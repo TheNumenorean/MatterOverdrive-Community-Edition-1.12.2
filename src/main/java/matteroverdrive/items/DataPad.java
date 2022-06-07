@@ -230,7 +230,7 @@ public class DataPad extends MOBaseItem implements IBlockScanner {
 
 
     public int getGuideID(ItemStack stack) {
-        TagCompountCheck(stack);
+        tagCompoundCheck(stack);
         if (hasOpenGuide(stack)) {
             return stack.getTagCompound().getInteger("guideID");
         }
@@ -238,12 +238,12 @@ public class DataPad extends MOBaseItem implements IBlockScanner {
     }
 
     public int getPage(ItemStack stack) {
-        TagCompountCheck(stack);
+        tagCompoundCheck(stack);
         return stack.getTagCompound().getInteger("page");
     }
 
     public boolean hasOpenGuide(ItemStack stack) {
-        TagCompountCheck(stack);
+        tagCompoundCheck(stack);
         return stack.getTagCompound().hasKey("guideID", Constants.NBT.TAG_INT);
     }
 

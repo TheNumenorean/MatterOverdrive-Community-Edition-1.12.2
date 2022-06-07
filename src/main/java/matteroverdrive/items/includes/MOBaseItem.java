@@ -46,13 +46,13 @@ public class MOBaseItem extends ItemBase {
         }
     }
 
-    public void InitTagCompount(ItemStack stack) {
+    public void initTagCompound(ItemStack stack) {
         stack.setTagCompound(new NBTTagCompound());
     }
 
-    public void TagCompountCheck(ItemStack stack) {
+    public void tagCompoundCheck(ItemStack stack) {
         if (!stack.hasTagCompound()) {
-            InitTagCompount(stack);
+            initTagCompound(stack);
         }
     }
 

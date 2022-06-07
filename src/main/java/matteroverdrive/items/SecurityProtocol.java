@@ -87,7 +87,7 @@ public class SecurityProtocol extends MOBaseItem implements IAdvancedModelProvid
         ItemStack itemStackIn = playerIn.getHeldItem(handIn);
         if (!itemStackIn.hasTagCompound()) {
             if (playerIn.isSneaking()) {
-                TagCompountCheck(itemStackIn);
+                tagCompoundCheck(itemStackIn);
                 itemStackIn.getTagCompound().setString("Owner", playerIn.getGameProfile().getId().toString());
                 itemStackIn.setItemDamage(1);
                 return ActionResult.newResult(EnumActionResult.SUCCESS, itemStackIn);

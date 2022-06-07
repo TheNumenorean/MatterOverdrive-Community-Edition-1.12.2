@@ -78,7 +78,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
 
     @Override
     public int getBaseEnergyUse(ItemStack item) {
-        this.TagCompountCheck(item);
+        this.tagCompoundCheck(item);
         byte level = getPowerLevel(item);
         return (int) Math.pow(ENERGY_MULTIPLY, level + 1);
     }
@@ -197,7 +197,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
         if (hand == EnumHand.OFF_HAND) {
             return ActionResult.newResult(EnumActionResult.PASS, itemStackIn);
         }
-        this.TagCompountCheck(itemStackIn);
+        this.tagCompoundCheck(itemStackIn);
 
         if (playerIn.isSneaking()) {
             SwitchModes(worldIn, playerIn, itemStackIn);
@@ -232,7 +232,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
     }
 
     private void SwitchModes(World world, EntityPlayer player, ItemStack item) {
-        this.TagCompountCheck(item);
+        this.tagCompoundCheck(item);
         SoundHandler.PlaySoundAt(world, MatterOverdriveSounds.weaponsPhaserSwitchMode, SoundCategory.PLAYERS, player);
         byte level = getPowerLevel(item);
         level++;
@@ -245,7 +245,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
     @Override
     public float getWeaponBaseDamage(ItemStack item) {
         float damage = 0;
-        this.TagCompountCheck(item);
+        this.tagCompoundCheck(item);
         byte level = getPowerLevel(item);
         if (level >= KILL_MODE_LEVEL) {
             damage = (float) Math.pow(KILL_DAMAGE_MULTIPLY, level - (KILL_MODE_LEVEL - 1));
@@ -270,7 +270,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
     }
 
     private int GetSleepTime(ItemStack item) {
-        this.TagCompountCheck(item);
+        this.tagCompoundCheck(item);
         byte level = getPowerLevel(item);
         if (level < KILL_MODE_LEVEL) {
             return (int) (Math.pow(level + 1, STUN_SLEEP_MULTIPLY) * sleepTimeMultipy(item));

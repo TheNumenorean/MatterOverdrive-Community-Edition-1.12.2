@@ -90,7 +90,7 @@ public class OmniTool extends EnergyWeapon {
         if (hand == EnumHand.OFF_HAND) {
             return ActionResult.newResult(EnumActionResult.PASS, stack);
         }
-        this.TagCompountCheck(stack);
+        this.tagCompoundCheck(stack);
 
         if (canDig(stack, world)) {
             player.setActiveHand(hand);
