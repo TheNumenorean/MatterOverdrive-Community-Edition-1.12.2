@@ -89,7 +89,7 @@ public class IonSniper extends EnergyWeapon {
 
     @Override
     public boolean canFire(ItemStack weapon, World world, EntityLivingBase shooter) {
-        return DrainEnergy(weapon, getShootCooldown(weapon), true) && !isOverheated(weapon) && !isEntitySpectator(shooter);
+        return drainEnergy(weapon, getShootCooldown(weapon), true) && !isOverheated(weapon) && !isEntitySpectator(shooter);
     }
 
     @Override
@@ -237,7 +237,7 @@ public class IonSniper extends EnergyWeapon {
 
     @Override
     public boolean onServerFire(ItemStack weapon, EntityLivingBase shooter, WeaponShot shot, Vec3d position, Vec3d dir, int delay) {
-        DrainEnergy(weapon, getShootCooldown(weapon), false);
+        drainEnergy(weapon, getShootCooldown(weapon), false);
         float newHeat = getHeat(weapon) + getMaxHeat(weapon) * 0.8f;
         setHeat(weapon, newHeat);
         manageOverheat(weapon, shooter.world, shooter);

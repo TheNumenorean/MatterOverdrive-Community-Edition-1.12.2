@@ -142,7 +142,7 @@ public class PlasmaShotgun extends EnergyWeapon {
                int count = Math.max(1, (int) ((1f - (timeElapsed / (float) MAX_CHARGE_TIME)) * maxCount));
                float shotPercent = count / (float) getShotCount(stack, entity);
                int ticks = getMaxItemUseDuration(stack) - timeLeft;
-               DrainEnergy(stack, ticks, false);               
+               drainEnergy(stack, ticks, false);
                ClientProxy.instance().getClientWeaponHandler().setCameraRecoil(0.3f + getAccuracy(stack, entity, true) * 0.1f, 1);
                Vec3d dir = entity.getLook(1);
                Vec3d pos = getFirePosition(entity, dir, Mouse.isButtonDown(1));
@@ -223,7 +223,7 @@ public class PlasmaShotgun extends EnergyWeapon {
 
     @Override
     public boolean canFire(ItemStack itemStack, World world, EntityLivingBase shooter) {
-        return !isOverheated(itemStack) && DrainEnergy(itemStack, getShootCooldown(itemStack), true) && !isEntitySpectator(shooter);
+        return !isOverheated(itemStack) && drainEnergy(itemStack, getShootCooldown(itemStack), true) && !isEntitySpectator(shooter);
     }
 
     @Override
@@ -341,7 +341,7 @@ public class PlasmaShotgun extends EnergyWeapon {
 
     @Override
     public boolean onServerFire(ItemStack weapon, EntityLivingBase shooter, WeaponShot shot, Vec3d position, Vec3d dir, int delay) {
-        DrainEnergy(weapon, getShootCooldown(weapon), false);
+        drainEnergy(weapon, getShootCooldown(weapon), false);
         float newHeat = (getHeat(weapon) + 4) * 2.7f;
         setHeat(weapon, newHeat);
         manageOverheat(weapon, shooter.world, shooter);

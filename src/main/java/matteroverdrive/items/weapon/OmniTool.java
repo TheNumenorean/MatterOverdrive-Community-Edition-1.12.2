@@ -140,7 +140,7 @@ public class OmniTool extends EnergyWeapon {
                 player.stopActiveHand();
             }
         } else {
-            DrainEnergy(stack, DIG_POWER_MULTIPLY, false);
+            drainEnergy(stack, DIG_POWER_MULTIPLY, false);
         }
     }
 
@@ -161,7 +161,7 @@ public class OmniTool extends EnergyWeapon {
             stopMiningLastBlock((EntityPlayer) entity, world);
         } else {
             int ticks = getMaxItemUseDuration(stack) - timeLeft;
-            DrainEnergy(stack, ticks, false);
+            drainEnergy(stack, ticks, false);
         }
     }
 
@@ -241,7 +241,7 @@ public class OmniTool extends EnergyWeapon {
 
     @Override
     public boolean canFire(ItemStack itemStack, World world, EntityLivingBase shooter) {
-        return !isOverheated(itemStack) && DrainEnergy(itemStack, getShootCooldown(itemStack), true) && !isEntitySpectator(shooter);
+        return !isOverheated(itemStack) && drainEnergy(itemStack, getShootCooldown(itemStack), true) && !isEntitySpectator(shooter);
     }
 
     @Override
@@ -250,7 +250,7 @@ public class OmniTool extends EnergyWeapon {
     }
 
     public boolean canDig(ItemStack itemStack, World world) {
-        return !isOverheated(itemStack) && DrainEnergy(itemStack, DIG_POWER_MULTIPLY, true);
+        return !isOverheated(itemStack) && drainEnergy(itemStack, DIG_POWER_MULTIPLY, true);
     }
 
     @Override
@@ -328,7 +328,7 @@ public class OmniTool extends EnergyWeapon {
 
     @Override
     public boolean onServerFire(ItemStack weapon, EntityLivingBase shooter, WeaponShot shot, Vec3d position, Vec3d dir, int delay) {
-        DrainEnergy(weapon, getShootCooldown(weapon), false);
+        drainEnergy(weapon, getShootCooldown(weapon), false);
         float newHeat = (getHeat(weapon) + 4) * 2.7f;
         setHeat(weapon, newHeat);
         manageOverheat(weapon, shooter.world, shooter);

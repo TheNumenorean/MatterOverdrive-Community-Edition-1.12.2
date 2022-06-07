@@ -519,10 +519,10 @@ public abstract class EnergyWeapon extends MOItemEnergyContainer implements IWea
     }
 
     public boolean needsRecharge(ItemStack weapon) {
-        return !DrainEnergy(weapon, getShootCooldown(weapon), true);
+        return !drainEnergy(weapon, getShootCooldown(weapon), true);
     }
 
-    protected boolean DrainEnergy(ItemStack item, float ticks, boolean simulate) {
+    protected boolean drainEnergy(ItemStack item, float ticks, boolean simulate) {
         IEnergyStorage container = getStorage(item);
         int amount = MathHelper.ceil(getEnergyUse(item) * ticks);
         int hasEnergy = container.getEnergyStored();

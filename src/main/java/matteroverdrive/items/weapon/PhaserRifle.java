@@ -201,7 +201,7 @@ public class PhaserRifle extends EnergyWeapon {
 
     @Override
     public boolean onServerFire(ItemStack weapon, EntityLivingBase shooter, WeaponShot shot, Vec3d position, Vec3d dir, int delay) {
-        DrainEnergy(weapon, getShootCooldown(weapon), false);
+        drainEnergy(weapon, getShootCooldown(weapon), false);
         float newHeat = (getHeat(weapon) + 4) * 2.2f;
         setHeat(weapon, newHeat);
         manageOverheat(weapon, shooter.world, shooter);
@@ -262,7 +262,7 @@ public class PhaserRifle extends EnergyWeapon {
 
     @Override
     public boolean canFire(ItemStack itemStack, World world, EntityLivingBase shooter) {
-        return !isOverheated(itemStack) && DrainEnergy(itemStack, getShootCooldown(itemStack), true) && !isEntitySpectator(shooter);
+        return !isOverheated(itemStack) && drainEnergy(itemStack, getShootCooldown(itemStack), true) && !isEntitySpectator(shooter);
     }
 
     @Override

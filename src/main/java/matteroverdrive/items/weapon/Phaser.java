@@ -220,7 +220,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
             return;
         }
         if (canFire(stack, player.world, player)) {
-            DrainEnergy(stack, 1, false);
+            drainEnergy(stack, 1, false);
             int powerLevelMultiply = (getPowerLevel(stack) + 1) / MAX_LEVEL;
             float newHeat = (getHeat(stack) + 1) * (1.1f + (0.05f * powerLevelMultiply));
             setHeat(stack, newHeat);
@@ -255,7 +255,7 @@ public class Phaser extends EnergyWeapon implements IWeapon {
 
     @Override
     public boolean canFire(ItemStack itemStack, World world, EntityLivingBase shooter) {
-        return !isOverheated(itemStack) && DrainEnergy(itemStack, 1, true) && !isEntitySpectator(shooter);
+        return !isOverheated(itemStack) && drainEnergy(itemStack, 1, true) && !isEntitySpectator(shooter);
     }
 
     @Override
